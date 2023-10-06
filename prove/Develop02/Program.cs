@@ -11,6 +11,11 @@ class Program
     static void Main(string[] args)
     {
         Journal myJournal = new Journal("journal.txt");
+        Prompt prompt = new Prompt();
+
+        List<string>loadedEntries = new List<string>();
+        string randomPrompt = null;
+        string entry = null;
 
         Console.WriteLine("Welcome Back to Your Journal!");
         bool continueProgram = true;
@@ -18,7 +23,7 @@ class Program
         while (continueProgram)
         {
             Console.WriteLine("Please select one of the following choices.");
-            Console.WriteLine("1. Write and Entry");
+            Console.WriteLine("1. Write an Entry");
             Console.WriteLine("2. Display");
             Console.WriteLine("3. Load");
             Console.WriteLine("4. Save");
@@ -29,53 +34,62 @@ class Program
             if (answer == 1)
             {
                 // use entry class
-                Prompt prompt = new Prompt();
-                string randomPrompt = prompt.GetRandomPrompt();
+                randomPrompt = prompt.GetRandomPrompt();
                 Console.WriteLine("Today's writing prompt: " + randomPrompt);
-                string entry = Console.ReadLine();
-                SaveEntryToFile(randomPrompt, entry);
+                entry = Console.ReadLine();
+                
+                // SaveEntryToFile(randomPrompt, entry);
             }
 
             else if (answer == 2)
             {
                 // call the display
-                myJournal.DisplayEntries();
+                myJournal.DisplayEntries(loadedEntries);
             }
 
             else if (answer == 3)
             {
                 // call the load
+                loadedEntries = myJournal.LoadEntries();
+                Console.WriteLine("Entries Loaded");
+                Console.WriteLine("");
             }
 
             else if (answer == 4)
-            {
-                // save file
-            }
+                if (!string.IsNullOrEmpty(entry))
+                {
+                    // save file
+                    myJournal.SaveEntryToFile(randomPrompt, entry);
+                }
+
+                else
+                {
+                    Console.WriteLine("No entry to save.  Please write and entry first.");
+                }
 
             else if (answer == 5)
             {
                 // quit
                 continueProgram = false;
-                // break;
             }
         }
     }
 
-    // public static void SaveEntryToFile(List<string> entries, string filename)
-    public static void SaveEntryToFile(string randomPrompt, string entry)
-    {
-        string filename = "journal.txt";
+    // // public static void SaveEntryToFile(List<string> entries, string filename)
+    // public static void SaveEntryToFile(string randomPrompt, string entry)
+    // {
+    //     string filename = "journal.txt";
 
-        using (StreamWriter outputFile = new StreamWriter(filename, true))
-        {
-            outputFile.WriteLine("Entry Date: " + DateTime.Now);
-            outputFile.WriteLine("Prompt: " + randomPrompt);
-            outputFile.WriteLine(entry);
-            outputFile.WriteLine();
-        }
+    //     using (StreamWriter outputFile = new StreamWriter(filename, true))
+    //     {
+    //         outputFile.WriteLine("Entry Date: " + DateTime.Now);
+    //         outputFile.WriteLine("Prompt: " + randomPrompt);
+    //         outputFile.WriteLine(entry);
+    //         outputFile.WriteLine();
+    //     }
 
-        Console.WriteLine("Entry saved to journal.txt");
-    }
+    //     Console.WriteLine("Entry saved to journal.txt");
+    // }
 }
 
     //         foreach (string entry in entries)

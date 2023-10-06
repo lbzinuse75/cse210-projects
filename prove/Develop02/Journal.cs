@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Runtime.CompilerServices;
 
 public class Journal
 {
@@ -10,25 +11,52 @@ public class Journal
         filename = journalFilename;
     }
 
-    public void DisplayEntries()
+    public void DisplayEntries(List<string> loadedEntries)
     {
+        {
+            if (loadedEntries.Count > 0)
+            {
+                Console.WriteLine("Journal Entries:");
+                Console.WriteLine("");
+                
+                foreach (string entry in loadedEntries)
+                {
+                    Console.WriteLine(entry);
+                }
+            
+                Console.WriteLine("This is the end of the Entries.");
+                Console.WriteLine();
+            }
+            else
+            {
+                Console.WriteLine("No journal entries found.");
+            }
+        }
+    }
+
+    public List<string> LoadEntries()
+    {
+        List<string> loadedEnteries = new List<string>();
         if (File.Exists(filename))
         {
-            Console.WriteLine("Journal Entries:");
-            Console.WriteLine("");
             string[] entries = File.ReadAllLines(filename);
-
-            foreach (string entry in entries)
-            {
-                Console.WriteLine(entry);
-            }
-
-            Console.WriteLine("This is the end of the Entries.");
+            loadedEnteries.AddRange(entries);
         }
+        return loadedEnteries;
+    }
 
-        else
+    public void SaveEntryToFile(string randomPrompt, string entry)
+    {
+        string filename = "journal.txt";
+
+        using (StreamWriter outputFile = new StreamWriter(filename, true))
         {
-            Console.WriteLine("No journal entries found.");
+            outputFile.WriteLine("Entry Date: " + DateTime.Now);
+            outputFile.WriteLine("Prompt: " + randomPrompt);
+            outputFile.WriteLine("Entry: " + entry);
+            outputFile.WriteLine();
         }
+
+        Console.WriteLine("Entry saved to journal.txt");
     }
 }
