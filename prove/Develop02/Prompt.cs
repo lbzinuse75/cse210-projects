@@ -1,15 +1,16 @@
 using System.Reflection.Metadata;
 using System.Collections.Generic;
 
+// Create a class that will hold a list of prompts and then Randomly select
+// a prompt for the user and display it to the console
 public class Prompt
 {
-    // public string _prompt;
+    // Class Prompt's attributes which is a list
     private List<string> prompts = new List<string>();
 
+    // the constructor holding the information of the list
     public Prompt()
     {
-        // List<string> prompts = new List<string>();
-
         prompts.Add("Who was the most interesting person I interacted with today?");
         prompts.Add("What was the best part of my day?");
         prompts.Add("How did I see the hand of the Lord in my life today?");
@@ -22,6 +23,8 @@ public class Prompt
         prompts.Add("What is the hardest thing you have done today?");
     }
 
+    // method that calls the Random method to randomly go through the list and pick an indexed
+    // prompt to display to the writer
     public string GetRandomPrompt()
     {
         Random random = new Random();

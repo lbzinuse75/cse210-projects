@@ -6,20 +6,26 @@ using System.IO.Pipes;
 using System.Security.Authentication.ExtendedProtection;
 using System.Security.Cryptography.X509Certificates;
 
+// Create a Journal Program that would hopefully help someone write
+// in their journal more.  Using 2 or more classes in this Journal Program.
 class Program
 {
     static void Main(string[] args)
     {
+        // Call the Journal Class to be referenced.
         Journal myJournal = new Journal("journal.txt");
-        Prompt prompt = new Prompt();
-
+        // Call the Entry Class to be referenced.
+        Entry entry = new Entry();
+        
+        // start the loadedEntries list as blank
         List<string>loadedEntries = new List<string>();
-        string randomPrompt = null;
-        string entry = null;
 
+        // Welcome the writer and make a loop of the menu to chose what action 
+        // they want to take.
         Console.WriteLine("Welcome Back to Your Journal!");
         bool continueProgram = true;
 
+        // Program will loop as long as continueProgram is true as set above.
         while (continueProgram)
         {
             Console.WriteLine("Please select one of the following choices.");
@@ -33,82 +39,37 @@ class Program
 
             if (answer == 1)
             {
-                // use entry class
-                randomPrompt = prompt.GetRandomPrompt();
-                Console.WriteLine("Today's writing prompt: " + randomPrompt);
-                entry = Console.ReadLine();
-                
-                // SaveEntryToFile(randomPrompt, entry);
+                // call the entry class to write and entry
+                entry.WholeEntry();
             }
 
             else if (answer == 2)
             {
-                // call the display
+                // display the Journal entries from the Journal class
+                // with the DisplayEntries method
                 myJournal.DisplayEntries(loadedEntries);
             }
 
             else if (answer == 3)
             {
-                // call the load
+                // load the Journal enteries from the Journal class
+                // with the LoadEntries method
                 loadedEntries = myJournal.LoadEntries();
                 Console.WriteLine("Entries Loaded");
                 Console.WriteLine("");
             }
 
             else if (answer == 4)
-                if (!string.IsNullOrEmpty(entry))
-                {
-                    // save file
-                    myJournal.SaveEntryToFile(randomPrompt, entry);
-                }
 
-                else
-                {
-                    Console.WriteLine("No entry to save.  Please write and entry first.");
-                }
+                    // save the Journal entry from the Journal class
+                    // with the SaveEntrytoFile method
+                    myJournal.SaveEntryToFile("journal.txt", entry._date, entry._prompt, entry._entry);
 
             else if (answer == 5)
             {
-                // quit
+                // quit the program
                 continueProgram = false;
             }
         }
     }
-
-    // // public static void SaveEntryToFile(List<string> entries, string filename)
-    // public static void SaveEntryToFile(string randomPrompt, string entry)
-    // {
-    //     string filename = "journal.txt";
-
-    //     using (StreamWriter outputFile = new StreamWriter(filename, true))
-    //     {
-    //         outputFile.WriteLine("Entry Date: " + DateTime.Now);
-    //         outputFile.WriteLine("Prompt: " + randomPrompt);
-    //         outputFile.WriteLine(entry);
-    //         outputFile.WriteLine();
-    //     }
-
-    //     Console.WriteLine("Entry saved to journal.txt");
-    // }
 }
-
-    //         foreach (string entry in entries)
-    //         {
-    //             outputFile.WriteLine(entry);
-    //         }
-    //     }
-    // }
-
-    // public static List<string> ReadFromFile(string filename)
-    // {
-    //     Console.WriteLine("Reading list from file...");
-    //     List<string> entries = new List<string>();
-
-    //     if (File.Exists(filename))
-    //     {
-    //         entries.AddRange(File.ReadAllLines(filename));
-    //     }
-    // //     string filename = "journal.txt";
-
-    //     return entries;
-    // }
