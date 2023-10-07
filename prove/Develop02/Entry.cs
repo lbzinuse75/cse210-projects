@@ -7,15 +7,15 @@ public class Entry
 {
     // The Entry Class Attributes
     public DateTime _date;
-    public string _prompt;
-    public string _entry;
+    public List<string> _prompts;
+    public List<string> _entries;
 
     // The constructor
     public Entry()
     {
         _date = DateTime.Now;
-        _prompt = string.Empty;
-        _entry = string.Empty;
+        _prompts = new List<string>();
+        _entries = new List<string>();
     }
 
     // The function that will give the writer a random prompt using the Prompt Class 
@@ -23,8 +23,22 @@ public class Entry
     public void WholeEntry()
     {
         Prompt prompt = new Prompt();
-        _prompt = prompt.GetRandomPrompt();
-        Console.WriteLine("Today's writing prompt: " + _prompt);
-        _entry = Console.ReadLine();
+        string randomPrompt = prompt.GetRandomPrompt();
+        _prompts.Add(randomPrompt);
+        
+        Console.WriteLine("Today's writing prompt about you: " + randomPrompt);
+
+        string entryRandom = Console.ReadLine();
+        _entries.Add(entryRandom);
+
+
+        Facts facts = new Facts();
+        string factPrompt = facts.GetFactPrompt();
+        _prompts.Add(factPrompt);
+        
+        Console.WriteLine("Today's writing prompt about facts of the day: " + factPrompt);
+
+        string entryFact = Console.ReadLine();
+        _entries.Add(entryFact);
     }
 }   

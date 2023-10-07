@@ -63,7 +63,7 @@ class Program
 
                     // save the Journal entry from the Journal class
                     // with the SaveEntrytoFile method
-                    myJournal.SaveEntryToFile("journal.txt", entry._date, entry._prompt, entry._entry);
+                    myJournal.SaveEntriesToFile("journal.txt", entry._date, entry._prompts, entry._entries);
 
             else if (answer == 5)
             {

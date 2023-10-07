@@ -46,14 +46,19 @@ public class Journal
 
     // The function that will save the journal entries to a different file and then let the user
     // know it has been saved
-    public void SaveEntryToFile(string filename, DateTime date, string prompt, string entry)
+    public void SaveEntriesToFile(string filename, DateTime date, List<string> prompts, List<string> entries)
     {
         using (StreamWriter outputFile = new StreamWriter(filename, true))
         {
             outputFile.WriteLine("Entry Date: " + date);
-            outputFile.WriteLine("Prompt: " + prompt);
-            outputFile.WriteLine("Entry: " + entry);
-            outputFile.WriteLine();
+
+            for (int i = 0; i <prompts.Count; i++)
+            {
+                outputFile.WriteLine("Prompt: " + prompts[i]);
+                outputFile.WriteLine("Entry: " + entries[i]);
+                outputFile.WriteLine();
+            }
+
         }
 
         Console.WriteLine("Entry saved to " + filename);
