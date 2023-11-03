@@ -63,7 +63,7 @@ class Program
                 return;
         }
 
-        // Displays the scripture and loops through lookig to see if the user enters "quit" or all the words are hidden then stops the 
+        // Displays the scripture and loops through looking to see if the user enters "quit" or all the words are hidden then stops the 
         // program if either of those happen
         string answer; 
         while(true)
