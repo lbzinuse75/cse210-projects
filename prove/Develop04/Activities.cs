@@ -22,66 +22,93 @@ public class Activities
         Console.WriteLine("In seconds, how long would you like your session?");
         string userDuration = Console.ReadLine();
         _duration = int.Parse(userDuration);
-        // _endMessage = "Well done!!";
     }
 
-    protected string GetReady()
+    protected void GetReady()
     {
         Console.WriteLine("Get ready...");
         {
-            for (int i = 5; i > 0; i--)
+            for (int i = 3; i > 0; i--)
             {
                 Console.Write(i);
                 Thread.Sleep(1000);
                 Console.Write("\b \b");
             }
         }
-        return "Done";
+        // return "Done";
     }
 
-    // protected string Spinner()
-    // {
-    //     List<string> spinnerString = new List<string>();
-    //     spinnerString.Add("|");
-    //     spinnerString.Add("/");
-    //     spinnerString.Add("-");
-    //     spinnerString.Add("\\");
-    //     spinnerString.Add("|");
-    //     spinnerString.Add("/");
-    //     spinnerString.Add("-");
-    //     spinnerString.Add("\\");
+    protected void DotAnimation()
+    {
+        for (int i = 3; i > 0; i--)
+        {
+            Console.Write(".");
+            Thread.Sleep(1000);
+            Console.Write("");
+        }
+    }
 
-    //     // foreach (string s in spinnerString)
-    //     // {
-    //     //     Console.Write(s);
-    //     //     Thread.Sleep(1000);
-    //     //     Console.Write("\b \b");
-    //     // }
+    protected void Spinner()
+    {
+        List<string> spinnerString = new List<string>();
+        spinnerString.Add("|");
+        spinnerString.Add("/");
+        spinnerString.Add("-");
+        spinnerString.Add("\\");
+        spinnerString.Add("|");
+        spinnerString.Add("/");
+        spinnerString.Add("-");
+        spinnerString.Add("\\");
+        spinnerString.Add("|");
+        // spinnerString.Add("/");
+        // spinnerString.Add("-");
+        // spinnerString.Add("\\");
+        // spinnerString.Add("|");
+        // spinnerString.Add("/");
+        // spinnerString.Add("-");
+        // spinnerString.Add("\\");
 
-    //     DateTime startTime = DateTime.Now;
-    //     DateTime endTime = startTime.AddSeconds(_duration);
+        foreach (string s in spinnerString)
+        {
+            Console.Write(s);
+            Thread.Sleep(1000);
+            Console.Write("\b \b");
+        }
+    }
 
-    //     int i = 0;
 
-    //     while (DateTime.Now < endTime)
-    //     {
-    //         string s = spinnerString[i];
-    //         Console.Write(s);
-    //         Thread.Sleep(1000);
-    //         Console.Write("\b \b");
+    protected void Timmer()
+    {
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(_duration);
 
-    //         i++;
+        int i = 0;
 
-    //         if (i >= spinnerString.Count)
-    //         {
-    //             i = 0;
-    //         }
+        while (DateTime.Now < endTime)
+            {
 
-    //         Console.WriteLine("Well done!!");
+        //     string s = spinnerString[i];
+        //     Console.Write(s);
+        //     Thread.Sleep(1000);
+        //     Console.Write("\b \b");
 
-    //     }
-    // }
-    
+        //     i++;
+
+        //     if (i >= spinnerString.Count)
+        //     {
+        //         i = 0;
+        //     }
+        // }
+            }
+        Console.WriteLine("Well done!!");
+    }
+
+    protected void Finish(string _activityName)
+    {
+        DotAnimation();
+        Console.WriteLine($"You have completed another {_duration} seconds of the {_activityName} activity.");
+        DotAnimation();
+    }    
 }  
     // protected Activities(string activityName, string description)
     // {

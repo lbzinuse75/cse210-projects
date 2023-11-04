@@ -3,16 +3,19 @@ using System.Runtime.CompilerServices;
 
 public class Breathing : Activities
 {
-
-
     public Breathing(string activityName, string description) : base(activityName, description)
     {
 
     }
 
-    public string GetReadyB()
+    public void GetReadyB()
     {
-        return GetReady();
+        GetReady();
+    }
+
+    public void SpinnerB()
+    {
+        Spinner();
     }
 
     public void StartBreathing()

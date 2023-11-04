@@ -28,21 +28,31 @@ class Program
 
                 if(number == "1")
                 {
-                    Breathing a1 = new Breathing("Breathing", "This activity will help you relax by walking you through breathing in, holding, and breathing out slowly.  Clear your mind and focus on your breathing.");
-                    a1.GetReadyB();
-                    a1.StartBreathing();
+                    Breathing b1 = new Breathing("Breathing", "This activity will help you relax by walking you through breathing in, holding, and breathing out slowly.  Clear your mind and focus on your breathing.");
+                    b1.GetReadyB();
+                    b1.StartBreathing();
                 }
                 else if(number == "2")
                 {
-
+                    Reflection r1 = new Reflection("Reflecting", "This activity will help you reflect on times in your life when you have shown strength and resilience.  This will help you recognize the power you have and how you can use it in other aspects of your life.");
+                    r1.GetReadyR();
+                    r1.DisplayPrompt();
+                    r1.SpinnerR();
+                    r1.DisplayRandomRefQue();
+                    r1.SpinnerR();
+                    r1.FinishR("Reflecting");
                 }
                 else if(number == "3")
                 {
-
+                    // Listing l1 = new Listing("Listing", "This activity will help you reflect on times in your life when you have shown strength and resilience.  This will help you recognize the power you have and how you can use it in other aspects of your life.");
+                    // l1.GetReadyL();
+                    // l1.StartListing();
                 }
                 else if (number =="4")
                 {
-
+                    // Gratitude g1 = new Gratitude("Gratitude", "This activity will help you reflect on times in your life when you have shown strength and resilience.  This will help you recognize the power you have and how you can use it in other aspects of your life.");
+                    // g1.GetReadyG();
+                    // g1.StartListing();
                 }
                 else if (number == "5")
                 {
