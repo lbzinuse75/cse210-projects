@@ -51,9 +51,10 @@ class Program
                 }
                 else if (number =="4")
                 {
-                    // Gratitude g1 = new Gratitude("Gratitude", "This activity will help you reflect on times in your life when you have shown strength and resilience.  This will help you recognize the power you have and how you can use it in other aspects of your life.");
-                    // g1.GetReadyG();
-                    // g1.StartListing();
+                    Gratitude g1 = new Gratitude("Gratitude", "This activity will help you reflect on the things you are grateful.  This will help you recognize the power of gratitude and help you reflect on the many blessings you enjoy in your life.");
+                    g1.GetReady();
+                    g1.StartGratitude();
+                    g1.Finish("Gratitude");
                 }
                 else if (number == "5")
                 {
