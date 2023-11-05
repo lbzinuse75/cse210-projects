@@ -8,11 +8,6 @@ public class Breathing : Activities
 
     }
 
-    public void GetReadyB()
-    {
-        GetReady();
-    }
-
     public void SpinnerB()
     {
         Spinner();
@@ -20,26 +15,32 @@ public class Breathing : Activities
 
     public void StartBreathing()
     {
-        Console.WriteLine("Breath In");
-        for (int i = 4; i > 0; i--)
+
+        StartTime();
+        EndTime(_startTime);
+        while(_endTime > DateTime.Now)
         {
-            Console.Write(i);
-            Thread.Sleep(1000);
-            Console.Write("\b \b");
-        }
-        Console.WriteLine("Hold Breath");
-        for (int i = 7; i> 0; i--)
-        {
-            Console.Write(i);
-            Thread.Sleep(1000);
-            Console.Write("\b \b");
-        }
-        Console.WriteLine("Breath Out");
-        for (int i = 8; i> 0; i--)
-        {
-            Console.Write(i);
-            Thread.Sleep(1000);
-            Console.Write("\b \b");
+            Console.WriteLine("Breath In");
+            for (int i = 4; i > 0; i--)
+            {
+                Console.Write(i);
+                Thread.Sleep(1000);
+                Console.Write("\b \b");
+            }
+            Console.WriteLine("Hold Breath");
+            for (int i = 7; i> 0; i--)
+            {
+                Console.Write(i);
+                Thread.Sleep(1000);
+                Console.Write("\b \b");
+            }
+            Console.WriteLine("Breath Out");
+            for (int i = 8; i> 0; i--)
+            {
+                Console.Write(i);
+                Thread.Sleep(1000);
+                Console.Write("\b \b");
+            }
         }
     }
 }

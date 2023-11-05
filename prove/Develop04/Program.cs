@@ -26,25 +26,25 @@ class Program
                 Console.WriteLine("What actvitiy would you like to do?");
                 number = Console.ReadLine();
 
+
+
                 if(number == "1")
                 {
                     Breathing b1 = new Breathing("Breathing", "This activity will help you relax by walking you through breathing in, holding, and breathing out slowly.  Clear your mind and focus on your breathing.");
-                    b1.GetReadyB();
+                    b1.GetReady();
                     b1.StartBreathing();
+                    b1.Finish("Breathing");
                 }
                 else if(number == "2")
                 {
                     Reflection r1 = new Reflection("Reflecting", "This activity will help you reflect on times in your life when you have shown strength and resilience.  This will help you recognize the power you have and how you can use it in other aspects of your life.");
                     r1.GetReadyR();
-                    r1.DisplayPrompt();
-                    r1.SpinnerR();
-                    r1.DisplayRandomRefQue();
-                    r1.SpinnerR();
-                    r1.FinishR("Reflecting");
+                    r1.StartReflection();
+                    r1.Finish("Reflecting");
                 }
                 else if(number == "3")
                 {
-                    // Listing l1 = new Listing("Listing", "This activity will help you reflect on times in your life when you have shown strength and resilience.  This will help you recognize the power you have and how you can use it in other aspects of your life.");
+                    // Listing l1 = new Listing("Listing", "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.");
                     // l1.GetReadyL();
                     // l1.StartListing();
                 }

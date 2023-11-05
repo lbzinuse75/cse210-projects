@@ -8,12 +8,12 @@ public class Activities
     protected int _duration;
     protected string _beginMessage;
     protected string _endMessage;
+    protected DateTime _startTime;
+    protected DateTime _endTime;
+  
 
     protected Activities(string activityName, string description)
     {
-        // _activityName = activityName;
-        // _description = description;
-        // _duration = duration;
         _beginMessage = $"Welcome to the {activityName} activity.";
         Console.WriteLine(_beginMessage);
         _description = description;
@@ -24,7 +24,7 @@ public class Activities
         _duration = int.Parse(userDuration);
     }
 
-    protected void GetReady()
+    public void GetReady()
     {
         Console.WriteLine("Get ready...");
         {
@@ -38,7 +38,7 @@ public class Activities
         // return "Done";
     }
 
-    protected void DotAnimation()
+    public void DotAnimation()
     {
         for (int i = 3; i > 0; i--)
         {
@@ -48,7 +48,7 @@ public class Activities
         }
     }
 
-    protected void Spinner()
+    public void Spinner()
     {
         List<string> spinnerString = new List<string>();
         spinnerString.Add("|");
@@ -60,13 +60,6 @@ public class Activities
         spinnerString.Add("-");
         spinnerString.Add("\\");
         spinnerString.Add("|");
-        // spinnerString.Add("/");
-        // spinnerString.Add("-");
-        // spinnerString.Add("\\");
-        // spinnerString.Add("|");
-        // spinnerString.Add("/");
-        // spinnerString.Add("-");
-        // spinnerString.Add("\\");
 
         foreach (string s in spinnerString)
         {
@@ -76,64 +69,21 @@ public class Activities
         }
     }
 
+    public void StartTime()
+        {
+            _startTime = DateTime.Now;
+        }
 
-    protected void Timmer()
+    public void EndTime(DateTime startTime)
     {
-        DateTime startTime = DateTime.Now;
-        DateTime endTime = startTime.AddSeconds(_duration);
-
-        int i = 0;
-
-        while (DateTime.Now < endTime)
-            {
-
-        //     string s = spinnerString[i];
-        //     Console.Write(s);
-        //     Thread.Sleep(1000);
-        //     Console.Write("\b \b");
-
-        //     i++;
-
-        //     if (i >= spinnerString.Count)
-        //     {
-        //         i = 0;
-        //     }
-        // }
-            }
-        Console.WriteLine("Well done!!");
+        _endTime = startTime.AddSeconds(_duration);
     }
 
-    protected void Finish(string _activityName)
+    public void Finish(string _activityName)
     {
         DotAnimation();
+        Console.WriteLine("");
         Console.WriteLine($"You have completed another {_duration} seconds of the {_activityName} activity.");
         DotAnimation();
     }    
 }  
-    // protected Activities(string activityName, string description)
-    // {
-
-    // }
-    // public GetStart(string activityName, string description, int duration, string beginMessage)
-    // {
-    //     return $"Welcome to the {activityName} activity.";
-    // }
-
-    // public string GetStart(string activityName, string description, int duration)
-    // {
-    //     string duration = Console.ReadLine()
-    // }
-
-    // // public GetEnd()
-    // //     {
-    // //         return 
-    // //     }
-    // private void Timer()
-    // {
-    //     for (int i = 5; i > 0; i--)
-    //     {
-    //         Console.Write(i);
-    //         Thread.Sleep(1000);
-    //         Console.Write("\b \b");
-    //     }
-    // }
