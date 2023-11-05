@@ -44,9 +44,10 @@ class Program
                 }
                 else if(number == "3")
                 {
-                    // Listing l1 = new Listing("Listing", "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.");
-                    // l1.GetReadyL();
-                    // l1.StartListing();
+                    Listing l1 = new Listing("Listing", "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.");
+                    l1.GetReady();
+                    l1.StartListing();
+                    l1.Finish("Listing");
                 }
                 else if (number =="4")
                 {

@@ -35,7 +35,16 @@ public class Activities
                 Console.Write("\b \b");
             }
         }
-        // return "Done";
+    }
+
+    public void Counter()
+    {
+        for (int i = 3; i > 0; i--)
+            {
+                Console.Write(i);
+                Thread.Sleep(1000);
+                Console.Write("\b \b");
+            }
     }
 
     public void DotAnimation()

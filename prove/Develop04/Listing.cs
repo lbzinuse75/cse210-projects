@@ -18,10 +18,27 @@ public class Listing : Activities
     public void StartListing()
     {
         Console.WriteLine("List as many responses you can to the following prompt:");
-        GetReady();
-        Console.Write(">");
-        // "You listed _ items!
-        // final message
-        // spiner
+        GetListingPrompt();
+        Console.Write("You may begin in:  "); 
+        Counter();
+        Console.WriteLine("");
+
+        StartTime();
+        EndTime(_startTime);
+        int counter = 0;
+        while(_endTime > DateTime.Now)
+            {
+                Console.Write(">");
+                Console.ReadLine();
+                counter++;
+            }
+        Console.WriteLine($"You listed {counter} items!");
+    }
+
+       public void GetListingPrompt()
+    {
+        Random random = new Random();
+        int randomIndex = random.Next(_ListingPrompt.Count);
+        Console.WriteLine(_ListingPrompt[randomIndex]);
     }
 }
