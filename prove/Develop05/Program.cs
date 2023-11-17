@@ -36,7 +36,7 @@ class Program
                     Console.WriteLine("   3. Checklist Goal");
                     Console.WriteLine("Which type of goal would you like to creat? ");
                     string goalNumber = Console.ReadLine();
-
+                    
                     if(goalNumber == "1")
                     {
                         Console.WriteLine("What is the name of your goal? ");
@@ -45,11 +45,11 @@ class Program
                         string description = Console.ReadLine();
                         Console.WriteLine("What is the amount of points associated with this goal? ");
                         int points = int.Parse(Console.ReadLine());
-                        Goal simple = new Goal(name, description, points);   
+                        Simple simple = new Simple(name, description, points);   
                         goalsList.Add(simple);     
                     }   
 
-                    else if(goalNumber == "2")
+                    else if (goalNumber == "2")
                     {
                         Console.WriteLine("What is the name of your goal? ");
                         string name = Console.ReadLine();
@@ -57,7 +57,7 @@ class Program
                         string description = Console.ReadLine();
                         Console.WriteLine("What is the amount of points associated with this goal? ");
                         int points = int.Parse(Console.ReadLine());
-                        Goal eternal = new Goal(name, description, points);   
+                        Eternal eternal = new Eternal(name, description, points);   
                         goalsList.Add(eternal);
                     }
 
@@ -73,7 +73,7 @@ class Program
                         string times = Console.ReadLine();
                         Console.WriteLine("What is the bonus for accomplishing it that many times? ");
                         int bonus = int.Parse(Console.ReadLine());
-                        Goal checkList = new Goal(name, description, points);   
+                        Checklist checkList = new Checklist(name, description, points, times, bonus);   
                         goalsList.Add(checkList);
                     }
                     
@@ -90,15 +90,7 @@ class Program
                         Console.WriteLine(goal.GoalDisplay());
                     }
                     break;
-                    // Console.WriteLine(simpleGoal.GoalDisplay());
-
-                    // foreach(Goal goal in goalsList)
-                    // {
-                    //     // simpleGoal.GoalDisplay();
-                    //     // Goal.saveGoalInList(simpleGoal);  
-                    //     goal.GoalDisplay();
-                    // }
-                    // break;
+                  
                 case "3":
                     
                     break;

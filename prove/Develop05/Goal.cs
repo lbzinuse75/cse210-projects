@@ -11,8 +11,8 @@ public class Goal
     protected int _points;
     protected string _times;
     protected int _bonus;
-    private int _goalNum;
-    private string _complete = "";
+    protected int _goalNum;
+    protected string _complete = "";
     
    
 
