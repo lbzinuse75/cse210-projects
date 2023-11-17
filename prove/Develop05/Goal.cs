@@ -3,22 +3,27 @@ using System.Diagnostics;
 using System.Diagnostics.Tracing;
 using System.Security.Cryptography.X509Certificates;
 
-public abstract class Goal
+public class Goal
 {
+    private static int _goalCount = 0;
     protected string _name;
     protected string _description;
     protected int _points;
     protected string _times;
     protected int _bonus;
-    private int _goalItem = 1;
-    private bool _complete = false;
-    protected List<Goal> goalsList ;
+    private int _goalNum;
+    private string _complete = "";
+    
+    static List<Goal> goalsList = new List<Goal>();
 
     public Goal(string name, string description, int points)
     {
         _name = name;
         _description = description;
         _points = points;
+
+        _goalCount++;
+        _goalNum = _goalCount;
     }
 
     public Goal(string name, string description, int points, string times, int bonus)
@@ -28,18 +33,49 @@ public abstract class Goal
         _points = points;
         _times = times;
         _bonus = bonus;
+
+        _goalCount++;
+        _goalNum = _goalCount;
     }
 
-    public void GoalDisplay()
+    public virtual string GoalDisplay()
     {
-        Console.Write($"{_goalItem}. [{_complete}] {_name} ({_description})");
-    }  
+        return $"{_goalNum}. [{_complete}] {_name} ({_description})";
+    } 
 
+    public static void SaveGoalInList(Goal goal)
+    {
+        goalsList.Add(goal);
+    }
+
+    public static List<Goal> GetGoalsList()
+        {
+            return goalsList;
+        }
+
+    // public static void saveGoalInList(Goal goal)
+    // {
+    //     goalsList.Add(goal);
+
+    //     foreach (Goal item in goalsList)
+    //     {
+    //         Console.WriteLine();
+    //     }
+    // }
 
     // public string DisplayScore()
     // {
 
     // }
 
-    public abstract string RecordEvent();
+    // public virtual int RecordEvent()
+    // {
+    //     return 10;
+    // }
+
+    public virtual bool IsComplete()
+    {
+        return false;
+    }
+
 }
