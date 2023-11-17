@@ -8,7 +8,7 @@ class Program
     static void Main(string[] args)
     {
         int score = 0;
-        // FileManager myFile = new FileManager();
+        List<Goal> goalsList = new List<Goal>();
         // List<Goal> goalsList = new List<Goal>();
         string number = "0";
 
@@ -46,7 +46,7 @@ class Program
                         Console.WriteLine("What is the amount of points associated with this goal? ");
                         int points = int.Parse(Console.ReadLine());
                         Goal simple = new Goal(name, description, points);   
-                        Goal.SaveGoalInList(simple);     
+                        goalsList.Add(simple);     
                     }   
 
                     else if(goalNumber == "2")
@@ -58,7 +58,7 @@ class Program
                         Console.WriteLine("What is the amount of points associated with this goal? ");
                         int points = int.Parse(Console.ReadLine());
                         Goal eternal = new Goal(name, description, points);   
-                        Goal.SaveGoalInList(eternal);
+                        goalsList.Add(eternal);
                     }
 
                     else if (goalNumber == "3")
@@ -74,7 +74,7 @@ class Program
                         Console.WriteLine("What is the bonus for accomplishing it that many times? ");
                         int bonus = int.Parse(Console.ReadLine());
                         Goal checkList = new Goal(name, description, points);   
-                        Goal.SaveGoalInList(checkList);
+                        goalsList.Add(checkList);
                     }
                     
                     else
@@ -84,7 +84,6 @@ class Program
                     break;
 
                 case "2":
-                    List<Goal> goalsList = Goal.GetGoalsList();
                     Console.WriteLine("The goals are:");
                     foreach (Goal goal in goalsList)
                     {

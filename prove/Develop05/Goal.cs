@@ -14,7 +14,7 @@ public class Goal
     private int _goalNum;
     private string _complete = "";
     
-    static List<Goal> goalsList = new List<Goal>();
+   
 
     public Goal(string name, string description, int points)
     {
@@ -43,15 +43,6 @@ public class Goal
         return $"{_goalNum}. [{_complete}] {_name} ({_description})";
     } 
 
-    public static void SaveGoalInList(Goal goal)
-    {
-        goalsList.Add(goal);
-    }
-
-    public static List<Goal> GetGoalsList()
-        {
-            return goalsList;
-        }
 
     // public static void saveGoalInList(Goal goal)
     // {
