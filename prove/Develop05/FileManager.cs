@@ -34,41 +34,41 @@ public static List<Goal> Load(string fileName)
         {
             string[] parts = line.Split("~");
 
-            if (parts[0] == "SimpleGoal")
+            if (parts[1] == "Simple")
             {
-                // string goalType = parts[0];
-                string name = parts[1];
-                string description = parts[2];
-                int points = int.Parse(parts[3]);
-                string complete = parts[4];
+                int goalCount = int.Parse(parts[0]);
+                string name = parts[2];
+                string description = parts[3];
+                int points = int.Parse(parts[4]);
+                bool complete = bool.Parse(parts[5]);
             
-                Simple goal = new Simple("SimpleGoal", name, description, points, complete);
+                Simple goal = new Simple(goalCount, "Simple", name, description, points, complete);
                 goalsList.Add(goal);
             }
 
-            else if (parts[0] == "Eternal")
+            else if (parts[1] == "Eternal")
             {
-                // string goalType = parts[0];
-                string name = parts[1];
-                string description = parts[2];
-                int points = int.Parse(parts[3]);
-                string complete = parts[4];
-                Eternal goal = new Eternal("Eternal", name, description, points, complete);
+                int goalCount = int.Parse(parts[0]);
+                string name = parts[2];
+                string description = parts[3];
+                int points = int.Parse(parts[4]);
+                bool complete = bool.Parse(parts[5]);
+                Eternal goal = new Eternal(goalCount, "Eternal", name, description, points, complete);
                 goalsList.Add(goal);
             }
 
-            else if (parts[0] == "Checklist")
+            else if (parts[1] == "Checklist")
             {
-                // string goalType = parts[0];
-                string name = parts[1];
-                string description = parts[2];
-                int points = int.Parse(parts[3]);
-                int bonus = int.Parse(parts[4]);
-                string times = parts[5];
-                string timesDone = parts[6];
-                string complete = parts[7];
+                int goalCount = int.Parse(parts[0]);
+                string name = parts[2];
+                string description = parts[3];
+                int points = int.Parse(parts[4]);
+                int bonus = int.Parse(parts[5]);
+                string times = parts[6];
+                string timesDone = parts[7];
+                bool complete = bool.Parse(parts[8]);
             
-                Checklist goal = new Checklist("Eternal", name, description, points, times, bonus, complete, timesDone);
+                Checklist goal = new Checklist(goalCount, "Checklist", name, description, points, times, bonus, complete, timesDone);
                 goalsList.Add(goal);
             }
         }
