@@ -5,7 +5,7 @@ using System.Security.Cryptography.X509Certificates;
 
 public class Goal
 {
-    private static int _goalCount = 0;
+    public static int _goalCount = 0;
     protected string _name;
     protected string _description;
     protected int _points;
@@ -43,16 +43,12 @@ public class Goal
         return $"{_goalNum}. [{_complete}] {_name} ({_description})";
     } 
 
+    public virtual string GetStringRepresentation()
+    {
+        return $":{_name}~{_description}~{_points}";
+    }
 
-    // public static void saveGoalInList(Goal goal)
-    // {
-    //     goalsList.Add(goal);
-
-    //     foreach (Goal item in goalsList)
-    //     {
-    //         Console.WriteLine();
-    //     }
-    // }
+    
 
     // public string DisplayScore()
     // {
@@ -64,9 +60,9 @@ public class Goal
     //     return 10;
     // }
 
-    public virtual bool IsComplete()
-    {
-        return false;
-    }
+    // public virtual bool IsComplete()
+    // {
+    //     return false;
+    // }
 
 }

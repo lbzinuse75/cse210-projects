@@ -1,7 +1,9 @@
 using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Formats.Asn1;
 using System.Globalization;
+using System.Threading.Tasks.Dataflow;
 
 class Program
 {
@@ -9,7 +11,6 @@ class Program
     {
         int score = 0;
         List<Goal> goalsList = new List<Goal>();
-        // List<Goal> goalsList = new List<Goal>();
         string number = "0";
 
         while(number != "6")
@@ -29,7 +30,7 @@ class Program
 
             switch (number)
             {
-                case "1":
+                case "1": //create a goal
                     Console.WriteLine("The types of Goals are: ");
                     Console.WriteLine("   1. Simple Goal");
                     Console.WriteLine("   2. Eternal Goal");
@@ -37,7 +38,7 @@ class Program
                     Console.WriteLine("Which type of goal would you like to creat? ");
                     string goalNumber = Console.ReadLine();
                     
-                    if(goalNumber == "1")
+                    if(goalNumber == "1") //simple
                     {
                         Console.WriteLine("What is the name of your goal? ");
                         string name = Console.ReadLine();
@@ -49,7 +50,7 @@ class Program
                         goalsList.Add(simple);     
                     }   
 
-                    else if (goalNumber == "2")
+                    else if (goalNumber == "2") //eternal
                     {
                         Console.WriteLine("What is the name of your goal? ");
                         string name = Console.ReadLine();
@@ -61,7 +62,7 @@ class Program
                         goalsList.Add(eternal);
                     }
 
-                    else if (goalNumber == "3")
+                    else if (goalNumber == "3") //checklist
                     {
                         Console.WriteLine("What is the name of your checklist goal? ");
                         string name = Console.ReadLine();
@@ -83,7 +84,7 @@ class Program
                     }
                     break;
 
-                case "2":
+                case "2": //list goals
                     Console.WriteLine("The goals are:");
                     foreach (Goal goal in goalsList)
                     {
@@ -91,14 +92,19 @@ class Program
                     }
                     break;
                   
-                case "3":
-                    
+                case "3": // save goals
+                    // Console.WriteLine("What is the filename for the goal file?");
+                    // string answer = Console.ReadLine();
+                    FileManager.SaveGoalToFile(goalsList);
                     break;
-                case "4":
+                case "4": // load goals
+                    Console.WriteLine("What is the filename for the goal file?");
+                    string answer = Console.ReadLine();
+                    goalsList = FileManager.ParseGoalFromString(answer);
                     break;
-                case "5":
+                case "5": //record event
                     break;
-                case "6":
+                case "6": // quit
                     break;
                 default:
                     Console.WriteLine("Invalid choice.");
