@@ -46,7 +46,7 @@ class Program
                         string description = Console.ReadLine();
                         Console.WriteLine("What is the amount of points associated with this goal? ");
                         int points = int.Parse(Console.ReadLine());
-                        Simple simple = new Simple(name, description, points);   
+                        Simple simple = new Simple("SimpleGoal", name, description, points, "_");   
                         goalsList.Add(simple);     
                     }   
 
@@ -58,7 +58,7 @@ class Program
                         string description = Console.ReadLine();
                         Console.WriteLine("What is the amount of points associated with this goal? ");
                         int points = int.Parse(Console.ReadLine());
-                        Eternal eternal = new Eternal(name, description, points);   
+                        Eternal eternal = new Eternal("Eternal", name, description, points, "_");   
                         goalsList.Add(eternal);
                     }
 
@@ -74,7 +74,7 @@ class Program
                         string times = Console.ReadLine();
                         Console.WriteLine("What is the bonus for accomplishing it that many times? ");
                         int bonus = int.Parse(Console.ReadLine());
-                        Checklist checkList = new Checklist(name, description, points, times, bonus);   
+                        Checklist checkList = new Checklist("Checklist", name, description, points, times, bonus, "_", "0");   
                         goalsList.Add(checkList);
                     }
                     
@@ -100,9 +100,14 @@ class Program
                 case "4": // load goals
                     Console.WriteLine("What is the filename for the goal file?");
                     string answer = Console.ReadLine();
-                    goalsList = FileManager.ParseGoalFromString(answer);
+                    goalsList = FileManager.Load(answer);
                     break;
                 case "5": //record event
+                    foreach (Goal goal in goalsList)
+                    {
+                        Console.WriteLine(goal.GoalDisplay());
+                    }
+
                     break;
                 case "6": // quit
                     break;

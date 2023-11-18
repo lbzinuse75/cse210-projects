@@ -1,1 +1,3 @@
-:simple~simpling~10
+SimpleGoal~simple~simple~10~_
+Eternal~eternal~eternal~20~_
+Checklist~checklist~checking~30~100~3~0~_
