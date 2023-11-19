@@ -9,13 +9,9 @@ public class Eternal : Goal
         {
                 return $"{_goalCount}~{_goalType}~{_name}~{_description}~{_points}~{_complete}";
         }   
-        // public override void RecordEvent()
-        // {
 
-        // }
-
-        // public override bool IsComplete()
-        // {
-        //     return true;
-        // }
+        public override int RecordEvent()
+        {
+                return _points;
+        } 
 }

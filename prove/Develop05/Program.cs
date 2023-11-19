@@ -12,6 +12,7 @@ class Program
         int score = 0;
         List<Goal> goalsList = new List<Goal>();
         string number = "0";
+        int goalCount = 0;
 
         while(number != "6")
         {
@@ -46,7 +47,7 @@ class Program
                         string description = Console.ReadLine();
                         Console.WriteLine("What is the amount of points associated with this goal? ");
                         int points = int.Parse(Console.ReadLine());
-                        Simple simple = new Simple(Goal._goalCount, "Simple", name, description, points, false);   
+                        Simple simple = new Simple(goalCount++, "Simple", name, description, points, false);   
                         goalsList.Add(simple);     
                     }   
 
@@ -122,7 +123,8 @@ class Program
 
                     else if (recordingGoal.GetGoalType() == "Eternal")
                     {
-                        recordingGoal.RecordEvent();
+                        int points = recordingGoal.RecordEvent();
+                        score = score + points;
                     }
 
                     else if (recordingGoal.GetGoalType() == "Checklist")

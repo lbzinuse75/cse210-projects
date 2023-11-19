@@ -10,27 +10,8 @@ public class Simple : Goal
         return $"{_goalCount}~{_goalType}~{_name}~{_description}~{_points}~{_complete}";
     }
 
-    // public override int RecordEvent()
-    // {
-    //     int points  
-
-
-    //     return _points;
-    // }
-
-    // public string Complete()
-    // {
-    //     if
-    // }
-
-    // public string
-    // public override void RecordEvent()
-    // {
-
-    // }
-
-    // public override bool IsComplete()
-    // {
-    //     return true;
-    // }
+     public override int RecordEvent()
+    {
+        return _points;
+    }
 }
