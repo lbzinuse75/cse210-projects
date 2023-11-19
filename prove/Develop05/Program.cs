@@ -127,8 +127,9 @@ class Program
 
                     else if (recordingGoal.GetGoalType() == "Checklist")
                     {
-                        recordingGoal.SetComplete();
-                        recordingGoal.RecordEvent();
+                        // recordingGoal.SetComplete();
+                        int points = recordingGoal.RecordEvent();
+                        score = score + points;
                     }
                    // if (int.Parse(goalAnswer) <= Goal._goalCount)
     //     {

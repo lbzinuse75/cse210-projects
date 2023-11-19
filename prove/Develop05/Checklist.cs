@@ -26,7 +26,9 @@ public class Checklist : Goal
 
     public override int RecordEvent()
     {
-        int timesDone = int.Parse(_timesDone) + 1;
+        int timesDone = int.Parse(_timesDone);
+        timesDone++;
+        _timesDone = timesDone.ToString();
         Console.WriteLine(timesDone);
         if (timesDone < int.Parse(_times))
         {
@@ -35,6 +37,7 @@ public class Checklist : Goal
 
         else if (timesDone == int.Parse(_times))
         {
+            SetComplete();
             return _points + _bonus;
         }
 

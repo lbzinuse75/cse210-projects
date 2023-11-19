@@ -69,8 +69,7 @@ public class Goal
 
     public virtual int RecordEvent()
     {
-        int points = _points;
-        return points;
+        return _points;
     }    
 
     // public string DisplayScore()
