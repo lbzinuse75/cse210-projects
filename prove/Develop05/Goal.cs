@@ -5,29 +5,15 @@ using System.Security.Cryptography.X509Certificates;
 
 public class Goal
 {
-    public static int _goalCount = 1;
+    public static int _goalCount = 0;
     protected string _name;
     protected string _description;
     protected int _points;
-    // protected int _goalNum;
+    protected int _goalNum;
     protected bool _complete;
     protected string _goalType;
-    
-   
 
-    // public Goal(string goalType, string name, string description, int points, bool complete)
-    // {
-    //     _name = name;
-    //     _description = description;
-    //     _points = points;
-    //     _goalType = goalType;
-    //     _complete = complete;
-
-    //     _goalCount++;
-    //     _goalNum = _goalCount;
-    // }
-
-    public Goal(int goalCount, string goalType, string name, string description, int points, bool complete)
+    public Goal(string goalType, string name, string description, int points, bool complete)
     {
         _name = name;
         _description = description;
@@ -36,17 +22,17 @@ public class Goal
         _complete = complete;
 
         _goalCount++;
-        _goalCount = goalCount;
+        _goalNum = _goalCount;
     }
 
     public virtual string GoalDisplay()
     {
-        return $"{_goalCount}. [{Complete()}] {_name} ({_description})";
+        return $"{_goalNum}. [{Complete()}] {_name} ({_description})";
     } 
 
     public virtual string SavingToFile()
     {
-        return $"{_goalCount}~{_goalType}~{_name}~{_description}~{_points}";
+        return $"{_goalNum}~{_goalType}~{_name}~{_description}~{_points}";
     }
 
     public string Complete()
@@ -71,17 +57,4 @@ public class Goal
     {
         return _points;
     }    
-
-    // public string DisplayScore()
-    // {
-        
-    // }
-
-
-
-    // public virtual bool IsComplete()
-    // {
-    //     return false;
-    // }
-
 }

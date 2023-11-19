@@ -11,7 +11,6 @@ public class FileManager
 
     }
 
- 
     public static void SaveGoalToFile(List<Goal> goals)
     {
         using (StreamWriter writer = new StreamWriter(_fileName))
@@ -42,7 +41,7 @@ public static List<Goal> Load(string fileName)
                 int points = int.Parse(parts[4]);
                 bool complete = bool.Parse(parts[5]);
             
-                Simple goal = new Simple(goalCount, "Simple", name, description, points, complete);
+                Simple goal = new Simple("Simple", name, description, points, complete);
                 goalsList.Add(goal);
             }
 
@@ -53,7 +52,7 @@ public static List<Goal> Load(string fileName)
                 string description = parts[3];
                 int points = int.Parse(parts[4]);
                 bool complete = bool.Parse(parts[5]);
-                Eternal goal = new Eternal(goalCount, "Eternal", name, description, points, complete);
+                Eternal goal = new Eternal("Eternal", name, description, points, complete);
                 goalsList.Add(goal);
             }
 
@@ -68,15 +67,11 @@ public static List<Goal> Load(string fileName)
                 string timesDone = parts[7];
                 bool complete = bool.Parse(parts[8]);
             
-                Checklist goal = new Checklist(goalCount, "Checklist", name, description, points, times, bonus, complete, timesDone);
+                Checklist goal = new Checklist("Checklist", name, description, points, times, bonus, complete, timesDone);
                 goalsList.Add(goal);
             }
         }
 
         return goalsList;
     }
-//     public void LoadGoal()
-//     {
-
-//     }
 }

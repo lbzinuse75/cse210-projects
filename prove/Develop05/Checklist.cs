@@ -7,7 +7,7 @@ public class Checklist : Goal
     private int _bonus;
     // int _bonus;
 
-    public Checklist(int goalCount, string goalType, string name, string description, int points, string times, int bonus, bool complete, string timesDone) : base(goalCount, goalType, name, description, points, complete)
+    public Checklist(string goalType, string name, string description, int points, string times, int bonus, bool complete, string timesDone) : base(goalType, name, description, points, complete)
         {
             _times = times;
             _bonus = bonus;
@@ -16,12 +16,12 @@ public class Checklist : Goal
 
     public override string GoalDisplay()
     {
-        return $"{_goalCount}. [{Complete()}] {_name} ({_description}) -- Currently completed: {_timesDone}/{_times}";
+        return $"{_goalNum}. [{Complete()}] {_name} ({_description}) -- Currently completed: {_timesDone}/{_times}";
     }
 
     public override string SavingToFile()
     {
-        return $"{_goalCount}~{_goalType}~{_name}~{_description}~{_points}~{_bonus}~{_times}~{_timesDone}~{_complete}";
+        return $"{_goalNum}~{_goalType}~{_name}~{_description}~{_points}~{_bonus}~{_times}~{_timesDone}~{_complete}";
     }
 
     public override int RecordEvent()
@@ -29,7 +29,6 @@ public class Checklist : Goal
         int timesDone = int.Parse(_timesDone);
         timesDone++;
         _timesDone = timesDone.ToString();
-        Console.WriteLine(timesDone);
         if (timesDone < int.Parse(_times))
         {
             return _points;
@@ -44,8 +43,3 @@ public class Checklist : Goal
         return 0;
     }
 }
-
-    // public override bool IsComplete()
-    // {
-    //     return true;
-    // }

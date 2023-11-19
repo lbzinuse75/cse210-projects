@@ -12,7 +12,6 @@ class Program
         int score = 0;
         List<Goal> goalsList = new List<Goal>();
         string number = "0";
-        int goalCount = 0;
 
         while(number != "6")
         {
@@ -47,7 +46,7 @@ class Program
                         string description = Console.ReadLine();
                         Console.WriteLine("What is the amount of points associated with this goal? ");
                         int points = int.Parse(Console.ReadLine());
-                        Simple simple = new Simple(goalCount++, "Simple", name, description, points, false);   
+                        Simple simple = new Simple("Simple", name, description, points, false);   
                         goalsList.Add(simple);     
                     }   
 
@@ -59,7 +58,7 @@ class Program
                         string description = Console.ReadLine();
                         Console.WriteLine("What is the amount of points associated with this goal? ");
                         int points = int.Parse(Console.ReadLine());
-                        Eternal eternal = new Eternal(Goal._goalCount++, "Eternal", name, description, points, false);   
+                        Eternal eternal = new Eternal("Eternal", name, description, points, false);   
                         goalsList.Add(eternal);
                     }
 
@@ -75,7 +74,7 @@ class Program
                         string times = Console.ReadLine();
                         Console.WriteLine("What is the bonus for accomplishing it that many times? ");
                         int bonus = int.Parse(Console.ReadLine());
-                        Checklist checkList = new Checklist(Goal._goalCount++, "Checklist", name, description, points, times, bonus, false, "0");   
+                        Checklist checkList = new Checklist("Checklist", name, description, points, times, bonus, false, "0");   
                         goalsList.Add(checkList);
                     }
                     
@@ -94,8 +93,6 @@ class Program
                     break;
                   
                 case "3": // save goals
-                    // Console.WriteLine("What is the filename for the goal file?");
-                    // string answer = Console.ReadLine();
                     FileManager.SaveGoalToFile(goalsList);
                     break;
                 case "4": // load goals
@@ -104,7 +101,6 @@ class Program
                     goalsList = FileManager.Load(fileNameAnswer);
                     break;
                 case "5": //record event
-                    
                     foreach (Goal goal in goalsList)
                     {
                         Console.WriteLine(goal.GoalDisplay());
@@ -114,6 +110,7 @@ class Program
                     string goalAnswer = Console.ReadLine();
 
                     Goal recordingGoal = goalsList[int.Parse(goalAnswer)-1];
+                    
                     if (recordingGoal.GetGoalType() == "Simple")
                     {
                         recordingGoal.SetComplete();
@@ -129,26 +126,12 @@ class Program
 
                     else if (recordingGoal.GetGoalType() == "Checklist")
                     {
-                        // recordingGoal.SetComplete();
                         int points = recordingGoal.RecordEvent();
                         score = score + points;
                     }
-                   // if (int.Parse(goalAnswer) <= Goal._goalCount)
-    //     {
-    //         return $"{_goalNum}. [{_complete}] {_name} ({_description})";
-    //     }
-                    // List<int> indexes = new List<int>();
-                    // int i = 0;
-                    // int counter = 1;
-                    // for (i=0; i < goal.Count; i++)
-                    //use indexing to find the goal
-                    //call the recordEvent method - return points
-                        //checklist is going to check to see if all events are complete
-                    //add return points to score
-                    
-
                     break;
                 case "6": // quit
+                    Console.WriteLine("Good Bye");
                     break;
                 default:
                     Console.WriteLine("Invalid choice.");
