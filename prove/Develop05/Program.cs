@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Formats.Asn1;
 using System.Globalization;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks.Dataflow;
 
 class Program
@@ -110,7 +111,7 @@ class Program
                     string goalAnswer = Console.ReadLine();
 
                     Goal recordingGoal = goalsList[int.Parse(goalAnswer)-1];
-                    
+
                     if (recordingGoal.GetGoalType() == "Simple")
                     {
                         recordingGoal.SetComplete();
@@ -136,7 +137,7 @@ class Program
                 default:
                     Console.WriteLine("Invalid choice.");
                     break;
-            }        
-        }    
+            }
+        }            
     }
 }

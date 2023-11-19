@@ -13,12 +13,21 @@ public class FileManager
 
     public static void SaveGoalToFile(List<Goal> goals)
     {
-        using (StreamWriter writer = new StreamWriter(_fileName))
+        try
         {
-            foreach (Goal goal in goals)
+            using (StreamWriter writer = new StreamWriter(_fileName))
             {
-                writer.WriteLine(goal.SavingToFile());
+                foreach (Goal goal in goals)
+                {
+                    writer.WriteLine(goal.SavingToFile());
+                }
+
+                // writer.WriteLine($"Score~{Program.score}");
             }
+        }
+        catch
+        {
+            Console.WriteLine("Error, something went wrong.");
         }
     }
 
