@@ -67,3 +67,10 @@ Entry: Excitement my project might be done.
 Prompt: How do you engage in political discussions or activities, such as voting, volunteering, or advocacy, and what motivates you to do so?
 Entry: I really don't, I should do better.
 
+Entry Date: 11/28/2023 8:12:50 PM
+Prompt: What is your favorite pod cast and why?
+Entry: Favorite Pod Cast, because.
+
+Prompt: How do you engage in political discussions or activities, such as voting, volunteering, or advocacy, and what motivates you to do so?
+Entry: political
+
