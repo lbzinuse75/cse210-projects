@@ -20,6 +20,7 @@ class Program
         Console.WriteLine("");
 
         Console.WriteLine($"The total price of order is ${order1.OrderTotal()}");
+        Console.WriteLine("");
 
 
         Address address2 = new Address("567 Celestial Street", "Heaven City", "Paris", "France");
@@ -32,11 +33,16 @@ class Program
         Console.WriteLine("Shipping Label");
         Console.WriteLine(order2.ShippingLabel());
         Console.WriteLine("");
+        Console.WriteLine("");
+
 
         Console.WriteLine("Packing Label");
         order2.PackingLabel();
         Console.WriteLine("");
 
         Console.WriteLine($"The total price of order is ${order2.OrderTotal()}");
+        Console.WriteLine("");
+        Console.WriteLine("");
+
     }
 }

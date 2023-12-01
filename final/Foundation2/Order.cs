@@ -19,11 +19,6 @@ public class Order
         _customer = customer;
     }
 
-    // public int SubTotal()
-    // {
-    //     return 0;
-    // }
-
     public int OrderTotal()
     {
         int total = 0;
