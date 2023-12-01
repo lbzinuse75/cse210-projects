@@ -20,6 +20,6 @@ public class Product
 
     public string ProductDisplay()
     {
-        return $"Product ID: {_productId}  Product Name: {_productName}";
+        return $"Product ID: {_productId}  Product Name: {_productName}  Quantity: {_quantity}";
     }
 }
