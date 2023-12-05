@@ -14,18 +14,7 @@ class Program
 
         foreach (Activity activity in activityList)
         {
-            if (activity is RunActivity)
-            Console.WriteLine(runActivity.GetSummary());
-
-            else if (activity is BikeActivity)
-            Console.WriteLine(bikeActivity.GetSummary());
-
-            else if (activity is SwimActivity)
-            Console.WriteLine(swimActivity.GetSummary());
-
-            else
-            Console.WriteLine("Error");
-
+            Console.WriteLine(activity.GetSummary());
         }
     }
 }
